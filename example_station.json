@@ -1,0 +1,33 @@
+{
+    "geometry": {
+      "x": 7.448226,
+      "y": 46.933647,
+      "spatialReference": {
+        "wkid": 4326
+      }
+    },
+    "attributes": {
+      "provider_id": "publibike",
+      "provider_name": "PubliBike",
+      "provider_timezone": "Europe/Zurich",
+      "id": "publibike:ea54e243-248b-4f51-a6d9-570b689ceb15",
+      "available": true,
+      "pickup_type": "station_based",
+      "station_name": "Restaurant Dählhölzli",
+      "station_address": "Tierparkweg 2",
+      "station_postcode": "3005",
+      "station_status_installed": true,
+      "station_status_renting": true,
+      "station_status_returning": true,
+      "station_status_num_vehicle_available": 0,
+      "station_region_id": "publibike:null",
+      "vehicle_type": [
+        "Bike",
+        "E-Bike"
+      ]
+    },
+    "featureId": "publibike:ea54e243-248b-4f51-a6d9-570b689ceb15",
+    "id": "publibike:ea54e243-248b-4f51-a6d9-570b689ceb15",
+    "layerBodId": "ch.bfe.sharedmobility",
+    "layerName": "Shared Mobility Angebote"
+  }

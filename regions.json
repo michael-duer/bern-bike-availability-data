@@ -1,0 +1,837 @@
+[ {
+  "region_id" : "bird-grenchen:b253d9a1-1ea8-4aa9-bfa9-e9201afd4718",
+  "name" : "grenchen",
+  "provider_id" : "bird-grenchen"
+}, {
+  "region_id" : "mybuxi_ch:Andermatt",
+  "name" : "Andermatt",
+  "provider_id" : "mybuxi_ch"
+}, {
+  "region_id" : "mybuxi_ch:Belp",
+  "name" : "Belp",
+  "provider_id" : "mybuxi_ch"
+}, {
+  "region_id" : "mybuxi_ch:Emmental",
+  "name" : "Emmental",
+  "provider_id" : "mybuxi_ch"
+}, {
+  "region_id" : "mybuxi_ch:Herzogenbuchsee",
+  "name" : "Herzogenbuchsee",
+  "provider_id" : "mybuxi_ch"
+}, {
+  "region_id" : "mybuxi_ch:Maur",
+  "name" : "Maur",
+  "provider_id" : "mybuxi_ch"
+}, {
+  "region_id" : "mybuxi_ch:Sense",
+  "name" : "Sense",
+  "provider_id" : "mybuxi_ch"
+}, {
+  "region_id" : "mybuxi_ch:Toggenburg",
+  "name" : "Toggenburg",
+  "provider_id" : "mybuxi_ch"
+}, {
+  "region_id" : "bird-biel:34a3d49d-f689-43ce-9c4a-8f01cb8c06ba",
+  "name" : "biel",
+  "provider_id" : "bird-biel"
+}, {
+  "region_id" : "bird-schaffhausen:f90ecadf-d8de-454e-b40a-b52dc1b67df8",
+  "name" : "schaffhausen",
+  "provider_id" : "bird-schaffhausen"
+}, {
+  "region_id" : "nextbike_ms:1055",
+  "name" : "Chur",
+  "provider_id" : "nextbike_ms"
+}, {
+  "region_id" : "nextbike_ms:1183",
+  "name" : "Churwalden",
+  "provider_id" : "nextbike_ms"
+}, {
+  "region_id" : "nextbike_ms:1184",
+  "name" : "Flims",
+  "provider_id" : "nextbike_ms"
+}, {
+  "region_id" : "nextbike_ms:1185",
+  "name" : "Malans",
+  "provider_id" : "nextbike_ms"
+}, {
+  "region_id" : "nextbike_ms:1186",
+  "name" : "Felsberg",
+  "provider_id" : "nextbike_ms"
+}, {
+  "region_id" : "nextbike_ms:1191",
+  "name" : "Landquart",
+  "provider_id" : "nextbike_ms"
+}, {
+  "region_id" : "carvelo2go:956d196e-765b-4bfa-e01f-0db4c2a4876d",
+  "name" : "Aarau",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:d0c15add-a20d-4fe4-932e-93c5481fc2b1",
+  "name" : "Aesch",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:0efd2e5e-3767-4ce9-fcb3-8e4db2dbcda1",
+  "name" : "Aigle",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:21222078-8c31-486d-b306-a8da60982d44",
+  "name" : "Altstätten",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:a7edadef-8d99-42a2-8f2d-c067f78f0f2d",
+  "name" : "Arbon",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:9fc9a06f-9f8b-4b07-8055-53a58503e749",
+  "name" : "Arosa",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:908707bf-9235-4fa6-848b-ca7d4c0b1878",
+  "name" : "Baden",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:a174c4dd-bcc6-47bf-e7a7-51efb4594ff1",
+  "name" : "Basel",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:6efa6dad-6fd4-4d43-9cf3-c1bdf6be014a",
+  "name" : "Bellinzona",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:b33b7cef-c74d-4789-9a31-8586dcf47e11",
+  "name" : "Bern",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:9e101bd8-7f9a-4cfe-9708-4922daf8266a",
+  "name" : "Biel/Bienne",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:14004651-0df5-484f-d977-3067f1b5b5ed",
+  "name" : "Brugg",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:05fd2ce7-c806-4e1b-ba41-546c0a3ba759",
+  "name" : "Buchs SG",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:478b1931-b70f-47d7-beb2-3401ad4e30ed",
+  "name" : "Bulle",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:9f0c061d-3455-45a0-b468-c3992e4de884",
+  "name" : "Buochs",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:04647e72-6e03-4974-8892-f0f113c9ff8e",
+  "name" : "Burgdorf",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:01ab913f-bc77-46cc-ce94-394c2ea0529f",
+  "name" : "Bussigny",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:318fb682-7ede-4e6f-bfab-14ce7be322aa",
+  "name" : "Carouge",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:765db560-e523-4cac-f8aa-5503904efe57",
+  "name" : "Chavannes-près-Renens",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:0b56dd12-c9c4-48a4-dd6f-b56891bc2fe4",
+  "name" : "Cheseaux-sur-Lausanne",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:d7402011-9381-47cd-e34d-3c31560720e7",
+  "name" : "Collex-Bossy",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:93b7b9c6-2ee6-435c-964d-bb1c55d49cd1",
+  "name" : "Corsier-sur-Vevey",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:1ee3f54a-247a-4e01-c127-437a44d0eee1",
+  "name" : "Davos",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:f87afc5e-6c73-4b56-ef63-b7c718171384",
+  "name" : "Deitingen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:78d940f9-80b6-476e-cab4-205e814ac0b8",
+  "name" : "Dietikon",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:d673b1de-7152-4c2f-90ff-9eee2a641c55",
+  "name" : "Domat/Ems",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:4944205f-60e3-408b-e3fb-dd888e1d764b",
+  "name" : "Dübendorf",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:ec8f5371-406b-4210-c145-dd666622d86b",
+  "name" : "Echallens",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:8c25f60f-1d53-420f-ddee-dfb8412a40dc",
+  "name" : "Echandens",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:51b1fe9d-e97e-4c7e-d4fb-de97fa7b82dc",
+  "name" : "Ecublens",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:e1ea2e66-2a1c-4ace-dffb-592b59087b9f",
+  "name" : "Emmen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:10b9af22-78aa-49d6-d198-c4424fed0751",
+  "name" : "Estavayer-le-Lac",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:428ff9b2-53cf-4283-f4f1-cc8dadb04f99",
+  "name" : "Flaach",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:11295123-0163-4622-88a4-29c2b7f6d7e7",
+  "name" : "Fribourg",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:870e340b-1953-428e-d2dc-1c24eaf56b4a",
+  "name" : "Genève",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:6a87b3ca-1c8c-471c-c89d-28878ae539b0",
+  "name" : "Grenchen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:be78dc60-f7ab-44e2-8786-9c8e2b31a6e8",
+  "name" : "Grüt",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:fb643131-c82e-480d-9d5f-b0c1d19ecddc",
+  "name" : "Horgen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:a8143bb0-6a16-49a2-bb30-dc43e7566a0a",
+  "name" : "Horw",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:81fc6929-35b9-4f17-bb7d-17836f94f59c",
+  "name" : "Interlaken",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:460db108-a3d6-4bce-a207-90385d2dcda7",
+  "name" : "Kloten",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:8c024719-4721-4f9f-9553-fda1f121a141",
+  "name" : "Köniz",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:ae568469-c50a-4932-88bf-8c1eb0218243",
+  "name" : "La Chaux-de-Fonds",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:9c330383-39e5-42a0-e2ae-50ecfe6c1522",
+  "name" : "La Tour-de-Peilz",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:7cf93ba2-27ef-4339-c550-41fe4608568e",
+  "name" : "Lancy",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:35643a71-324e-485c-e9ec-339197df7c4d",
+  "name" : "Langenthal",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:6dca8350-0c11-40b5-de3a-6628bf2469da",
+  "name" : "Lausanne",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:c62109e5-b814-4ff9-e352-9e918fd2fdac",
+  "name" : "Le Mont-sur-Lausanne",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:e8174fc5-4cdb-4172-80ab-f010b9fb9754",
+  "name" : "Lenzburg",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:6dfbb03a-0bdc-4f1c-a3e9-0516555e6f45",
+  "name" : "Liestal",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:0d23fdc5-1fcd-4e7a-ff28-22dce815e731",
+  "name" : "Locarno",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:c8631103-df6f-49b5-9ed1-6f11aea201f5",
+  "name" : "Losone",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:20f207fe-a9a0-4f19-8db2-ca23a76f1ab6",
+  "name" : "Lugano",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:404c3386-19d5-4931-b999-4f90fa9c9184",
+  "name" : "Luzern",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:53ff9390-dd58-44e9-d144-aaa3dbfb69da",
+  "name" : "Lyss",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:6867c33f-6928-49b2-a932-c8c6c49d4ac1",
+  "name" : "Männedorf",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:e2aaf064-43c9-40d7-881f-62427cab1f8a",
+  "name" : "Martigny",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:1221777d-5589-4410-eedd-39c8285ec4f8",
+  "name" : "Mendrisio",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:3b10eb9f-e87d-41b1-bee0-3f079d2bf6f5",
+  "name" : "Meyrin",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:1d2a31ac-7f9c-437a-b924-4b984c483f27",
+  "name" : "Morges",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:73a224e8-2e9d-401c-db6f-06bcb3c45417",
+  "name" : "Münsingen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:036e2d6d-a56f-4334-a693-4a395cb615c3",
+  "name" : "Murten",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:f5260efc-88d5-4af3-88a9-cb2eb541cbcb",
+  "name" : "Muttenz",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:45e68dfe-7a45-4fbf-ad44-6b3faa28169c",
+  "name" : "Nänikon",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:9f027749-1360-49fb-dabc-a176a7ed7ef7",
+  "name" : "Neuchâtel",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:8d74766e-0c37-449a-9d11-0bbcc8a4cf37",
+  "name" : "Nidau",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:d3d5b0b4-34d2-43b4-f7fd-eb969b6f8239",
+  "name" : "Nyon",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:cf10cd2a-4f22-4c01-d82b-404f7537918b",
+  "name" : "Olten",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:39de7a8d-c969-4eda-fb28-9a62e113b75e",
+  "name" : "Onex",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:7b47f785-1afa-4332-a7c2-5e0bc978ba98",
+  "name" : "Opfikon",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:a7d7d672-2521-4509-964c-e157007d9bdc",
+  "name" : "Ostermundigen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:a2fdbff2-f0fc-4f50-9ff7-9f13ad8efaaf",
+  "name" : "Paradiso",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:88abd519-1fcd-44cb-8e4a-fff980ab0de6",
+  "name" : "Plan-les-Ouates",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:74425c6d-df70-4ac9-9800-1877412d3cb6",
+  "name" : "Prilly",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:5f3b9b52-5c65-4817-cfaa-9480f63f4bf9",
+  "name" : "Pully",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:262298b5-3221-4091-8cf1-268eb3ca6059",
+  "name" : "Rapperswil-Jona",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:222c61a7-cdba-415f-a663-16e870c00ddc",
+  "name" : "Regensdorf",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:ff8117b1-f1eb-4dab-b060-1ba4a7183012",
+  "name" : "Renens",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:43f1f773-3d68-4d65-8a35-2a81923d3b13",
+  "name" : "Riehen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:cda66726-d9e7-406e-fe70-96bc7c146743",
+  "name" : "Romanshorn",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:43932368-6bd0-4ab2-d8e2-9166f516ac74",
+  "name" : "Rüti ZH",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:3aa22e7b-c6ed-49d6-acb2-d94d82b16a15",
+  "name" : "Saint-Sulpice",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:38923d71-5382-4af5-aea3-62cbe9c1013f",
+  "name" : "Salavaux",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:98dca2fc-4104-442c-e5b7-22edf006f6c2",
+  "name" : "Schaffhausen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:1d9223c1-1a37-49fa-cdf0-461ff3c2dadd",
+  "name" : "Schwyz",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:f47807f1-1dda-46e4-c7be-d66d33fd4b66",
+  "name" : "Sempach",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:f1761752-4bda-43a6-be3e-8d120c8c291a",
+  "name" : "Sion",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:bfafc160-5f9c-457c-cfa4-31cab72ef14f",
+  "name" : "Solothurn",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:4886ff58-4bba-4109-a876-cdad14cd089a",
+  "name" : "St. Gallen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:16ddca50-e7a5-4b08-8cb0-f12f0fbd35ec",
+  "name" : "Stans",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:bacd102d-33dc-4263-e7b0-32ea3ee8d19f",
+  "name" : "Steinhausen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:efd5cc8f-5db1-402d-e667-20fdf5b2903a",
+  "name" : "Tägerwilen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:fbcb0d02-40e7-4385-b4df-ae215645a39b",
+  "name" : "Thalwil",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:24c8721b-ced8-4869-92bf-cc52012b0f8f",
+  "name" : "Troinex",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:936ccc56-80e6-441f-959b-da5747118c61",
+  "name" : "Uster",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:d61af4ab-13b7-4c41-f744-c3208ca17e96",
+  "name" : "Vernier",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:a46ade5a-f1ec-4de9-b765-5c06c558b7f4",
+  "name" : "Vevey",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:fdc8d62d-beab-4479-a5da-db209a7e5b4a",
+  "name" : "Wädenswil",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:686d9c7f-168d-45be-ae1a-25e74b87087d",
+  "name" : "Wallisellen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:6716253e-4a51-42d0-8508-7b8576603f41",
+  "name" : "Weinfelden",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:6ff88921-9bb8-4416-858d-951e4d02e8e3",
+  "name" : "Wil",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:2c94a5e6-e822-4605-f0f5-64b174f979b6",
+  "name" : "Winterthur",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:538720ed-83ce-4313-adf1-67f4c05d484b",
+  "name" : "Worb",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:40afeadd-d2d8-47c7-f342-9079af18f26f",
+  "name" : "Yverdon-les-Bains",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:5db47b97-d990-4315-8670-790d41b21322",
+  "name" : "Yvonand",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:9af06326-3691-466f-e9bf-5a80eff15fb4",
+  "name" : "Zollikofen",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:d2bf4bdd-0dcb-4340-c0da-41885432b053",
+  "name" : "Zuchwil",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:12a72002-4ae3-423e-cefc-34acfdf670c3",
+  "name" : "Zug",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "carvelo2go:f71546e4-4556-4462-eeb8-f01c89f38076",
+  "name" : "Zürich",
+  "provider_id" : "carvelo2go"
+}, {
+  "region_id" : "donkey_kreuzlingen:633",
+  "name" : "Kombinierte Mobilität Regio Kreuzlingen",
+  "provider_id" : "donkey_kreuzlingen"
+}, {
+  "region_id" : "donkey_yverdon-les-bains:519",
+  "name" : "Yverdon-les-Bains",
+  "provider_id" : "donkey_yverdon-les-bains"
+}, {
+  "region_id" : "voiscooters.com:201",
+  "name" : "Frauenfeld",
+  "provider_id" : "voiscooters.com"
+}, {
+  "region_id" : "voiscooters.com:206",
+  "name" : "Basel",
+  "provider_id" : "voiscooters.com"
+}, {
+  "region_id" : "voiscooters.com:319",
+  "name" : "Illnau-Effretikon",
+  "provider_id" : "voiscooters.com"
+}, {
+  "region_id" : "voiscooters.com:194",
+  "name" : "Zurich",
+  "provider_id" : "voiscooters.com"
+}, {
+  "region_id" : "voiscooters.com:128",
+  "name" : "Winterthur",
+  "provider_id" : "voiscooters.com"
+}, {
+  "region_id" : "voiscooters.com:222",
+  "name" : "Bern",
+  "provider_id" : "voiscooters.com"
+}, {
+  "region_id" : "bird-platform-partner-jmfleetswl-biel:34a3d49d-f689-43ce-9c4a-8f01cb8c06ba",
+  "name" : "biel",
+  "provider_id" : "bird-platform-partner-jmfleetswl-biel"
+}, {
+  "region_id" : "donkey_thun:572",
+  "name" : "Bikesharing Stadt Thun",
+  "provider_id" : "donkey_thun"
+}, {
+  "region_id" : "nextbike_ch:88",
+  "name" : "Sursee Plus",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:126",
+  "name" : "Luzern",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:323",
+  "name" : "Hergiswil",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:383",
+  "name" : "Stans",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:388",
+  "name" : "Stansstad",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:391",
+  "name" : "Horw",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:463",
+  "name" : "Sarnen",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:464",
+  "name" : "Wolfenschiessen",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:465",
+  "name" : "Oberdorf-Dallenwil",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:483",
+  "name" : "Ennetmoos",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:489",
+  "name" : "Meggen",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:491",
+  "name" : "Kriens",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:492",
+  "name" : "Hochdorf",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:624",
+  "name" : "Ebikon",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:716",
+  "name" : "Nottwil",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:738",
+  "name" : "Eich",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:854",
+  "name" : "Sempach",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:855",
+  "name" : "Neuenkirch",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:857",
+  "name" : "Emmen",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:861",
+  "name" : "Büron",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1037",
+  "name" : "Ballwil",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1038",
+  "name" : "Eschenbach",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1039",
+  "name" : "Inwil",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1040",
+  "name" : "Altdorf",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1041",
+  "name" : "Buchrain",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1059",
+  "name" : "Ruswil",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1193",
+  "name" : "Wolhusen-Werthenstein",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1213",
+  "name" : "Hohenrain",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "nextbike_ch:1215",
+  "name" : "Rothenburg",
+  "provider_id" : "nextbike_ch"
+}, {
+  "region_id" : "donkey_ge:627",
+  "name" : "Donkey Geneva",
+  "provider_id" : "donkey_ge"
+}, {
+  "region_id" : "donkey_neuchatel:417",
+  "name" : "Neuchâtelroule",
+  "provider_id" : "donkey_neuchatel"
+}, {
+  "region_id" : "bird-kloten:c9824921-ec5d-4b65-8f62-3d92071e4790",
+  "name" : "kloten",
+  "provider_id" : "bird-kloten"
+}, {
+  "region_id" : "bird-platform-partner-jmfleets-bulle:eb4f0c6f-cc50-4f49-a40e-3b8c551c1f1e",
+  "name" : "bulle",
+  "provider_id" : "bird-platform-partner-jmfleets-bulle"
+}, {
+  "region_id" : "bird-zurich:53af5666-f9a3-4eeb-af69-a3c5a15f3c16",
+  "name" : "zurich",
+  "provider_id" : "bird-zurich"
+}, {
+  "region_id" : "bird-basel:16637f29-e31a-4265-b722-a9ff743727f2",
+  "name" : "basel",
+  "provider_id" : "bird-basel"
+}, {
+  "region_id" : "velospot:3",
+  "name" : "Locarnese/Bellinzonese",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:4",
+  "name" : "PSI Cargo Group",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:6",
+  "name" : "Biel/Bienne",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:7",
+  "name" : "Riviera",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:8",
+  "name" : "PSI",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:9",
+  "name" : "Chaux-de-Fonds - Le Locle",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:10",
+  "name" : "Martigny",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:11",
+  "name" : "Nestlé",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:12",
+  "name" : "X-System -Intermobility",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:13",
+  "name" : "Ateliers",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:14",
+  "name" : "Ile St-Pierre",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:16",
+  "name" : "X-Test - nkol2_station_group",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:17",
+  "name" : "X-Test - TEST IMY",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:18",
+  "name" : "X-Test - Ravenna test",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:19",
+  "name" : "Basel",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:21",
+  "name" : "X-Test - test station group",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:22",
+  "name" : "X-System - Swiss Ebike",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:24",
+  "name" : "Aigle",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:25",
+  "name" : "OUT_Ile St-Pierre",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:26",
+  "name" : "AEW",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:27",
+  "name" : "Agglo Valais Central",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:28",
+  "name" : "Agglo Valais central entreprise",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:29",
+  "name" : "Aarau",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:30",
+  "name" : "X-System - PRODUCTION",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:31",
+  "name" : "X-Test - Cargo Test Berne",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:32",
+  "name" : "Freiburg",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:33",
+  "name" : "Andermatt",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:34",
+  "name" : "Your bike at trainstation",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:35",
+  "name" : "Ticino",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:36",
+  "name" : "Zürich",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:37",
+  "name" : "X-Test - Zurich 2.0 test station group",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:38",
+  "name" : "X-Test - Locarnese-Bellinzonese NATIONAL",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:40",
+  "name" : "ISP Station Group",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:41",
+  "name" : "Bern",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:43",
+  "name" : "Lausanne",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:44",
+  "name" : "Biel/Bienne - Bern",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:45",
+  "name" : "MBC",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "velospot:46",
+  "name" : "Hochrhein",
+  "provider_id" : "velospot"
+}, {
+  "region_id" : "bird-winterthur:447ef5f8-c473-41fc-8627-aac39c8a0668",
+  "name" : "winterthur",
+  "provider_id" : "bird-winterthur"
+}]
