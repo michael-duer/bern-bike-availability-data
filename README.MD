@@ -1,32 +1,143 @@
 # Bern Bike Availability Data
 
-Collect real-time PubliBike station availability data in Bern using [Shared Mobility Open Data API](https://opendata.swiss/de/dataset/standorte-und-verfugbarkeit-von-shared-mobility-angeboten).
+Collect and store real-time bike sharing availability data in Bern using the [Shared Mobility Open Data API](https://opendata.swiss/de/dataset/standorte-und-verfugbarkeit-von-shared-mobility-angeboten). The collected data is used to analyze bike availability patterns over time.
 
-## API Requests
-The REST api is very convenient for spatial filtering so you can simple request all stations in a radius (`Tolerance`) around a point (`Geometry`).
+## Setup
 
-The GBFS 2.3 API on the other hand is designed for station status feeds and repeated data collection. (Using this API requires you to use a valid email address in the header of the request.)
+1. Clone repository
 
-It is probably best to first use the REST API to get the id of all stations and then use the GBFS 2.3 API to collect the data over time.
+```sh
+git clone https://github.com/michael-duer/bern-bike-availability-data.git
+cd bern-bike-availability-data
+```
 
-### REST api
-#### Get all Providors
+2. Configure environment
+
+- Copy the environment template to create your local `.env` file:
+
+```
+cp .env.test .env
+```
+
+- Add your email address:
+
+```
+EMAIL_ADDRESS=your_email@example.com
+```
+
+- Make the script executable:
+
+```sh
+chmod +x data_collection.sh
+```
+
+3. Run the data collection script:
+
+```sh
+./data_collection.sh
+```
+
+## Output
+
+Collected data is stored in `data.ndjson` (newline-delimited JSON).
+
+Each line represents one API snapshot (including the API timestamp `last_updated`):
+
+```json
+{"last_updated":1777830904, ...}
+{"last_updated":1777838104, ...}
+```
+
+For easier inspection (e.g. in VS Code), the data can be converted into a JSON array:
+
+```sh
+jq -s '.' data.ndjson > data.json
+```
+
+## Data Collection Plan
+
+1. Use the GBFS API to collect all station status data at regular intervals
+2. Use the `station_information` endpoint to identify stations located in Bern
+3. Filter the collected data locally by `station_id`
+4. Get additional information about stations (e.g. address, gps) using the REST API
+
+## API Overview
+
+This project uses two APIs:
+
+- **GBFS API** for repeated collection of station status data
+- **REST API** for filtering and identifying stations in Bern
+
+### REST API
+
+The REST API allows querying stations within a geographic radius.
+This is mainly used to identify `station_id`s belonging to Bern. These IDs are then used to filter the data collected via the GBFS API.
+
+#### Get all Providers
+
 ```sh
 curl -X 'GET' 'https://api.sharedmobility.ch/v1/sharedmobility/providers' -H 'accept: application/json'
 ```
 
-#### Get all Publibike stations in Bern
-With the following request you get a list of all stations inside the specified radius. The `station_status_num_vehicle_available` attribute provides you with the number of bikes available but does not specify the type. 
+#### Get all stations in radius around gps coordinates of Bern
+
+The following request returns a list of all stations inside the specified radius (`Tolerance`). The `station_status_num_vehicle_available` attribute provides you with the number of bikes available but does not specify the type (e.g. e-bike).
+
 ```sh
-curl -X 'GET' \ 
-  'https://api.sharedmobility.ch/v1/sharedmobility/identify?' \ 
-  'filters=ch.bfe.sharedmobility.provider.id%3Dpublibike' \ 
-  '&filters=ch.bfe.sharedmobility.pickup_type%3Dstation_based' \ 
-  '&Geometry=7.4474%2C46.9480' \ 
-  '&Tolerance=5000' \ 
-  '&offset=0' \ 
-  '&geometryFormat=esrijson' \ 
+curl -X 'GET' \
+  'https://api.sharedmobility.ch/v1/sharedmobility/identify?' \
+  'filters=ch.bfe.sharedmobility.provider.id%3Dvelospot' \
+  '&filters=ch.bfe.sharedmobility.pickup_type%3Dstation_based' \
+  '&Geometry=7.4474%2C46.9480' \
+  '&Tolerance=5000' \
+  '&offset=0' \
+  '&geometryFormat=esrijson' \
   -H 'accept: application/json'
 ```
 
-There are about 250 Publibike stations in a 5km radius around the center of Bern.
+### GBFS 2.3 API
+
+#### Station status
+
+Using the following url we can request the station status of all Velospot stations in Switzerland.
+
+```sh
+https://sharedmobility.ch/v2/gbfs/velospot/station_status?Authorization=gbfs@sharedmobility.ch
+```
+
+#### Available API endpoints for providers
+
+Get a list of all endpoints available for **velospot**:
+
+```sh
+https://sharedmobility.ch/v2/gbfs/velospot/gbfs?Authorization=gbfs@sharedmobility.ch
+```
+
+**System information**
+
+```sh
+https://sharedmobility.ch/v2/gbfs/velospot/system_information?Authorization=gbfs@sharedmobility.ch
+```
+
+**Station information**
+
+```sh
+https://sharedmobility.ch/v2/gbfs/velospot/station_information?Authorization=gbfs@sharedmobility.ch
+```
+
+**Station Status**
+
+```sh
+https://sharedmobility.ch/v2/gbfs/velospot/station_status?Authorization=gbfs@sharedmobility.ch
+```
+
+**Vehicle Types**
+
+```sh
+https://sharedmobility.ch/v2/gbfs/velospot/vehicle_types?Authorization=gbfs@sharedmobility.ch
+```
+
+## References
+
+- Shared Mobility REST API: https://github.com/SFOE/sharedmobility/blob/main/Sharedmobility.ch-API.md
+- GBFS API: https://github.com/SFOE/sharedmobility/blob/main/Access%20the%20data.md
