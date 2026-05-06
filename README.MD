@@ -37,11 +37,104 @@ chmod +x data_collection.sh
 ./data_collection.sh
 ```
 
+<details>
+<summary>Raspberry Pi Setup (Optional)</summary>
+
+To run the data collection continuously, you can use a Raspberry Pi.
+
+### 1. Prepare the Raspberry Pi
+
+- Flash Raspberry Pi OS
+- Enable SSH
+- Connect the Pi to your network
+
+### 2. Connect via SSH
+
+```sh
+ssh <username>@<ip address>
+```
+
+### 3. Install updates and dependencies
+
+```sh
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git curl jq
+```
+
+### 4. Clone and set up the project
+
+```sh
+git clone https://github.com/michael-duer/bern-bike-availability-data.git
+cd bern-bike-availability-data
+
+cp .env.test .env
+# edit .env and add your email
+
+chmod +x data_collection.sh
+```
+
+### 5. Test the script
+
+Before setting up cron, verify that the script runs successfully:
+
+```sh
+./data_collection.sh
+```
+
+### 6. Prepare script for cron
+
+Cron runs in a minimal environment and cannot reliably handle relative paths.
+Therefore, use absolute paths for `.env`, data, and logs.
+
+```sh
+source /home/pi/bern-bike-availability-data/.env # Line 6
+DATA_FILE="/home/pi/bern-bike-availability-data/data/$(date +%F).ndjson" # Line 14
+ERROR_LOG="/home/pi/bern-bike-availability-data/collector_errors.log" # Line 15
+```
+
+### 7. Schedule automatic execution (cron)
+
+Open the crontab:
+
+```sh
+crontab -e
+```
+
+Add the following line to run the script every 5 minutes:
+
+```sh
+*/5 * * * * /home/pi/bern-bike-availability-data/data_collection.sh
+```
+
+### 7. Verify data collection
+
+After a few minutes, verify that the cron job is working using the following command. It displays the number of lines of all files in the data folder, which reflects the number of successful requests.
+
+```sh
+wc -l data/*.ndjson
+```
+
+Check the error log for failed requests or JSON parsing issues:
+
+```sh
+tail -f collector_errors.log
+```
+
+### 8. Copy data to other machine
+
+Copy collected data files from the Raspberry Pi to the current local folder:
+
+```sh
+scp <username>@<ip address>:/home/pi/bern-bike-availability-data/data/ .
+```
+
+</details>
+
 ## Output
 
-Collected data is stored in `data.ndjson` (newline-delimited JSON).
+Collected data is stored in daily NDJSON files (`newline-delimited JSON`) to simplify file management and reduce the risk of data loss.
 
-Each line represents one API snapshot (including the API timestamp `last_updated`):
+Each line in a file represents a single API snapshot, including the API timestamp `last_updated`:
 
 ```json
 {"last_updated":1777830904, ...}

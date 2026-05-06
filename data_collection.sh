@@ -11,7 +11,7 @@ echo " Start data collection..."
 AUTH="?Authorization=${EMAIL_ADDRESS}"
 URL="https://sharedmobility.ch/v2/gbfs/velospot/station_status$AUTH"
 
-DATA_FILE="data.ndjson"
+DATA_FILE="data/$(date +%F).ndjson" # Create file for each day (e.g. 2026-05-05.ndjson)
 ERROR_LOG="collector_errors.log"
 
 MAX_RETRIES=3
@@ -45,6 +45,6 @@ if ! echo "$response" | jq -e . > /dev/null 2>> "$ERROR_LOG"; then
 fi
 
 # If the response is valid JSON, append it to the data file
-echo "$response" | jq -c '.' >> "$DATA_FILE"
+echo "$response" | jq -c "." >> "$DATA_FILE"
 
 echo "Script finished"
