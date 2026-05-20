@@ -211,6 +211,12 @@ For easier inspection (e.g. in VS Code), an NDJSON file can be converted into a 
 jq -s '.' data/raw/2026-05-05.ndjson > data/raw/2026-05-05.json
 ```
 
+## Data availability
+
+The full raw NDJSON dataset is not included because the files are too large for GitHub. One example NDJSON file is provided in `data/raw/` to illustrate the expected API response format.
+
+The processed dataset used for the visualization is included in `data/processed/bike_availability_bern.csv`.
+
 ## API overview
 
 This project uses two Shared Mobility APIs:
