@@ -1,46 +1,84 @@
 # Bern Bike Availability Data
 
-Collect and store real-time bike sharing availability data in Bern using the [Shared Mobility Open Data API](https://opendata.swiss/de/dataset/standorte-und-verfugbarkeit-von-shared-mobility-angeboten). The collected data is used to analyze bike availability patterns over time.
+This project collects and processes real-time Velospot bike availability data for stations in Bern using the [Shared Mobility Open Data API](https://opendata.swiss/de/dataset/standorte-und-verfugbarkeit-von-shared-mobility-angeboten).
+
+The goal is to analyze spatial and temporal patterns in bike availability over one week. Since the API provides station availability snapshots rather than individual trip records, changes in the number of available bikes are used as a proxy for station activity and turnover.
+
+## Project structure
+
+```txt
+bern-bike-availability-data/
+├── data/
+│   ├── metadata/                         # Static/reference data from the API
+│   │   ├── providers.json                # List of mobility providers
+│   │   ├── regions.json                  # List of available regions
+│   │   └── station_information.json      # Station metadata such as name and coordinates
+│   ├── raw/                              # Raw station status snapshots collected from the API
+│   │   ├── 2026-05-05.ndjson
+│   │   ├── 2026-05-06.ndjson
+│   │   └── ...
+│   └── processed/                        # Final datasets
+│       └── bike_availability_bern.csv
+├── scripts/
+│   ├── fetch_station_status.sh           # Fetches station status data from the API
+│   └── prepare_bike_dataset.sh           # Filters, transforms and joins data into the final dataset
+├── logs/
+│   └── station_status_collection.log     # Log file for successful data collection and errors
+├── tableau/                              # Tableau workbook
+├── .env.example                          # Template for required environment variables
+├── .gitignore
+└── README.md
+```
 
 ## Setup
 
-1. Clone repository
+### 1. Clone repository
 
 ```sh
 git clone https://github.com/michael-duer/bern-bike-availability-data.git
 cd bern-bike-availability-data
 ```
 
-2. Configure environment
+### 2. Configure environment
 
-- Copy the environment template to create your local `.env` file:
+Copy the environment template:
 
 ```
-cp .env.test .env
+cp .env.example .env
 ```
 
-- Add your email address:
+Add your email address to `.env`:
 
 ```
 EMAIL_ADDRESS=your_email@example.com
 ```
 
-- Make the script executable:
+### 3. Install dependencies
+
+The Bash scripts require `curl` and `jq`.
 
 ```sh
-chmod +x data_collection.sh
+# On Linux
+sudo apt install curl jq
+# On Mac using Homebrew
+brew install curl jq
 ```
 
-3. Run the data collection script:
+For Windows, the recommended setup is Windows Subsystem for Linux (WSL). After installing WSL, use the Linux commands above.
+
+### 4. Make scripts executable
+
+If the scripts are not executable after cloning the repository, run:
 
 ```sh
-./data_collection.sh
+chmod +x scripts/fetch_station_status.sh
+chmod +x scripts/prepare_bike_dataset.sh
 ```
 
 <details>
 <summary>Raspberry Pi Setup (Optional)</summary>
 
-To run the data collection continuously, you can use a Raspberry Pi.
+To collect data continuously, the data collection script can be scheduled on a Raspberry Pi using cron.
 
 ### 1. Prepare the Raspberry Pi
 
@@ -67,10 +105,11 @@ sudo apt install -y git curl jq
 git clone https://github.com/michael-duer/bern-bike-availability-data.git
 cd bern-bike-availability-data
 
-cp .env.test .env
+cp .env.example .env
 # edit .env and add your email
 
-chmod +x data_collection.sh
+chmod +x scripts/fetch_station_status.sh
+chmod +x scripts/prepare_bike_dataset.sh
 ```
 
 ### 5. Test the script
@@ -78,21 +117,20 @@ chmod +x data_collection.sh
 Before setting up cron, verify that the script runs successfully:
 
 ```sh
-./data_collection.sh
+./scripts/fetch_station_status.sh
 ```
 
 ### 6. Prepare script for cron
 
-Cron runs in a minimal environment and cannot reliably handle relative paths.
-Therefore, use absolute paths for `.env`, data, and logs.
+Cron runs in a minimal environment and may not handle relative paths reliably. For cron usage, use absolute paths for `.env`, data files, and logs inside scripts/fetch_station_status.sh.
 
 ```sh
-source /home/pi/bern-bike-availability-data/.env # Line 6
-DATA_FILE="/home/pi/bern-bike-availability-data/data/$(date +%F).ndjson" # Line 14
-ERROR_LOG="/home/pi/bern-bike-availability-data/collector_errors.log" # Line 15
+source /home/<username>/bern-bike-availability-data/.env # Line 6
+DATA_FILE="/home/<username>/bern-bike-availability-data/data/raw/$(date +%F).ndjson" # Line 14
+LOG_FILE="/home/<username>/bern-bike-availability-data/logs/station_status_collection.log" # Line 15
 ```
 
-### 7. Schedule automatic execution (cron)
+### 7. Schedule automatic execution
 
 Open the crontab:
 
@@ -103,134 +141,87 @@ crontab -e
 Add the following line to run the script every 5 minutes:
 
 ```sh
-*/5 * * * * /home/pi/bern-bike-availability-data/data_collection.sh
+*/5 * * * * /home/<username>/bern-bike-availability-data/scripts/fetch_station_status.sh
 ```
 
-### 7. Verify data collection
+### 8. Verify data collection
 
-After a few minutes, verify that the cron job is working using the following command. It displays the number of lines of all files in the data folder, which reflects the number of successful requests.
+After a few minutes, check whether new rows are being added:
 
 ```sh
-wc -l data/*.ndjson
+wc -l data/raw/*.ndjson
 ```
 
-Check the error log for failed requests or JSON parsing issues:
+Check the log file for successful requests or errors:
 
 ```sh
-tail -f collector_errors.log
+tail -f logs/station_status_collection.log
 ```
 
-### 8. Copy data to other machine
+### 9. Copy data to another machine
 
-Copy collected data files from the Raspberry Pi to the current local folder:
+Copy collected raw data files from the Raspberry Pi to your local machine:
 
 ```sh
-scp <username>@<ip address>:/home/pi/bern-bike-availability-data/data/ .
+scp <username>@<ip address>:/home/<username>/bern-bike-availability-data/data/raw/*.ndjson ./data/raw/
 ```
 
 </details>
 
-## Output
+## Usage
 
-Collected data is stored in daily NDJSON files (`newline-delimited JSON`) to simplify file management and reduce the risk of data loss.
+### Collect station status data
 
-Each line in a file represents a single API snapshot, including the API timestamp `last_updated`:
+Run the data collection script:
+
+```sh
+./scripts/fetch_station_status.sh
+```
+
+The script appends one API snapshot to the daily NDJSON file in `data/raw/`.
+
+### Prepare the dataset
+
+After collecting the data, run:
+
+```sh
+./scripts/prepare_bike_dataset.sh
+```
+
+This script combines the raw NDJSON files, filters stations in Bern, flattens the station status data, removes duplicates, joins station metadata, and creates the final CSV dataset.
+
+The final dataset is stored in:
+
+```sh
+data/processed/bike_availability_bern.csv
+```
+
+## Data format
+
+Raw data is stored as daily NDJSON files, where each line represents one API snapshot, including a timestamp `last_updated` from the API:
 
 ```json
-{"last_updated":1777830904, ...}
-{"last_updated":1777838104, ...}
+{"last_updated":1777830904,"ttl":60,"version":"2.3","data":{}}
+{"last_updated":1777838104,"ttl":60,"version":"2.3","data":{}}
 ```
 
-For easier inspection (e.g. in VS Code), the data can be converted into a JSON array:
+For easier inspection (e.g. in VS Code), an NDJSON file can be converted into a JSON array:
 
 ```sh
-jq -s '.' data.ndjson > data.json
+jq -s '.' data/raw/2026-05-05.ndjson > data/raw/2026-05-05.json
 ```
 
-## Data Collection Plan
+## API overview
 
-1. Use the GBFS API to collect all station status data at regular intervals
-2. Use the `station_information` endpoint to identify stations located in Bern
-3. Filter the collected data locally by `station_id`
-4. Get additional information about stations (e.g. address, gps) using the REST API
+This project uses two Shared Mobility APIs:
 
-## API Overview
+- **GBFS API:** Used for repeated collection of Velospot station status snapshots, including the number and type of available bikes at each station.
+- **REST API:** Used to retrieve reference and station metadata, such as providers, regions, station locations, and coordinates. This information is used to identify and filter stations in Bern.
 
-This project uses two APIs:
-
-- **GBFS API** for repeated collection of station status data
-- **REST API** for filtering and identifying stations in Bern
-
-### REST API
-
-The REST API allows querying stations within a geographic radius.
-This is mainly used to identify `station_id`s belonging to Bern. These IDs are then used to filter the data collected via the GBFS API.
-
-#### Get all Providers
-
-```sh
-curl -X 'GET' 'https://api.sharedmobility.ch/v1/sharedmobility/providers' -H 'accept: application/json'
-```
-
-#### Get all stations in radius around gps coordinates of Bern
-
-The following request returns a list of all stations inside the specified radius (`Tolerance`). The `station_status_num_vehicle_available` attribute provides you with the number of bikes available but does not specify the type (e.g. e-bike).
-
-```sh
-curl -X 'GET' \
-  'https://api.sharedmobility.ch/v1/sharedmobility/identify?' \
-  'filters=ch.bfe.sharedmobility.provider.id%3Dvelospot' \
-  '&filters=ch.bfe.sharedmobility.pickup_type%3Dstation_based' \
-  '&Geometry=7.4474%2C46.9480' \
-  '&Tolerance=5000' \
-  '&offset=0' \
-  '&geometryFormat=esrijson' \
-  -H 'accept: application/json'
-```
-
-### GBFS 2.3 API
-
-#### Station status
-
-Using the following url we can request the station status of all Velospot stations in Switzerland.
-
-```sh
-https://sharedmobility.ch/v2/gbfs/velospot/station_status?Authorization=gbfs@sharedmobility.ch
-```
-
-#### Available API endpoints for providers
-
-Get a list of all endpoints available for **velospot**:
-
-```sh
-https://sharedmobility.ch/v2/gbfs/velospot/gbfs?Authorization=gbfs@sharedmobility.ch
-```
-
-**System information**
-
-```sh
-https://sharedmobility.ch/v2/gbfs/velospot/system_information?Authorization=gbfs@sharedmobility.ch
-```
-
-**Station information**
-
-```sh
-https://sharedmobility.ch/v2/gbfs/velospot/station_information?Authorization=gbfs@sharedmobility.ch
-```
-
-**Station Status**
-
-```sh
-https://sharedmobility.ch/v2/gbfs/velospot/station_status?Authorization=gbfs@sharedmobility.ch
-```
-
-**Vehicle Types**
-
-```sh
-https://sharedmobility.ch/v2/gbfs/velospot/vehicle_types?Authorization=gbfs@sharedmobility.ch
-```
+The final dataset combines real-time availability data with station metadata for spatial and temporal analysis in Tableau.
 
 ## References
 
+- Data Source: https://opendata.swiss/de/dataset/standorte-und-verfugbarkeit-von-shared-mobility-angeboten
 - Shared Mobility REST API: https://github.com/SFOE/sharedmobility/blob/main/Sharedmobility.ch-API.md
-- GBFS API: https://github.com/SFOE/sharedmobility/blob/main/Access%20the%20data.md
+- Shared Mobility GBFS API: https://github.com/SFOE/sharedmobility/blob/main/Access%20the%20data.md

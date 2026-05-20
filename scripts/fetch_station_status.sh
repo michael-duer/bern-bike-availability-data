@@ -12,7 +12,7 @@ AUTH="?Authorization=${EMAIL_ADDRESS}"
 URL="https://sharedmobility.ch/v2/gbfs/velospot/station_status$AUTH"
 
 DATA_FILE="data/$(date +%F).ndjson" # Create file for each day (e.g. 2026-05-05.ndjson)
-ERROR_LOG="collector_errors.log"
+ERROR_LOG="collector.log"
 
 MAX_RETRIES=3
 RETRY_DELAY=10
