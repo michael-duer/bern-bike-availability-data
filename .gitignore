@@ -2,16 +2,39 @@
 .venv/
 __pycache__/
 *.pyc
+*.py
 
 # macOS
 .DS_Store
-
+._*
 # Large datasets
 data/
 outputs/
+
+# Raw data
+data/*.ndjson
+data/*.json
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
 
 # IDE
+.idea/
+
+# Outputs
+outputs/
+
+# Temporary files
+*_tmp.json
+
+# Combined datasets
+data/combined.ndjson
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
 .idea/

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Exit script immediately if a command fails
+# Exit immediately if a command fails
 set -e
 
 # Create outputs directory if it does not exist
@@ -11,64 +11,144 @@ echo "Combining NDJSON files..."
 # Combine all NDJSON files while excluding:
 # - already combined files
 # - hidden macOS metadata files
-find data -name "*.ndjson" ! -name "combined.ndjson" ! -name "._*" -exec cat {} + > data/combined.ndjson
+find data -name "*.ndjson" \
+! -name "combined.ndjson" \
+! -name "._*" \
+-exec cat {} + > data/combined.ndjson
 
-echo "Filtering Bern station metadata..."
+echo "Creating station metadata..."
 
-# Filter Bern stations
-jq '.data.stations[]| select(.region_id == "44" and (.name | contains("Bern")))| {station_id,name,region_id,lat,lon}' data/station_information.json > outputs/bern_stations.json
+# Create temporary station metadata table
+jq '
+.data.stations[]
 
-echo "Flattening bike availability data..."
+| select(
+    .region_id == "44"
+    and
+    (.name | contains("Bern"))
+  )
 
-# Flatten bike availability data
-#jq '.last_updated as $timestamp| .data.stations[]| {timestamp: $timestamp,last_reported,station_id,total_bikes: .num_bikes_available,ebikes:(.vehicle_types_available[]| select(.vehicle_type_id == "ebike")| .count),mbikes:(.vehicle_types_available[]| select(.vehicle_type_id == "mbike")| .count),hbikes:(.vehicle_types_available[]| select(.vehicle_type_id == "hbike")| .count)}' data/combined.ndjson > outputs/bike_flat.json
-# Create raw flattened data
-jq '.last_updated as $timestamp| .data.stations[]| {timestamp: $timestamp,last_reported,station_id,total_bikes: .num_bikes_available,ebikes:(.vehicle_types_available[] | select(.vehicle_type_id == "ebike") | .count),mbikes:(.vehicle_types_available[] | select(.vehicle_type_id == "mbike") | .count),hbikes:(.vehicle_types_available[] | select(.vehicle_type_id == "hbike") | .count)}' data/combined.ndjson > outputs/bike_flat_raw.json
-# Check duplicates
-echo "Checking duplicates..."
+| {
+    station_id,
+    name,
+    lat,
+    lon,
+    capacity
+  }
 
-jq -r '[.timestamp,.station_id]| @tsv' outputs/bike_flat_raw.json | sort | uniq -c | awk '$1 > 1'> outputs/duplicates_count.txt
+' data/station_information.json \
+| jq -s '.' \
+> stations_tmp.json
 
-# Remove duplicates
-jq -s 'unique_by([.timestamp, .station_id])[]' outputs/bike_flat_raw.json > outputs/bike_flat.json
+echo "Creating bike observations..."
 
-# Report how many where removed
-RAW_COUNT=$(wc -l < outputs/bike_flat_raw.json)
-DEDUP_COUNT=$(wc -l < outputs/bike_flat.json)
+# Create temporary flattened bike table
+jq '
 
-REMOVED=$((RAW_COUNT - DEDUP_COUNT))
+.last_updated as $timestamp
 
-echo "Removed $REMOVED duplicate rows."
+| .data.stations[]
 
-echo "Creating CSV files..."
+| {
 
-# Convert station metadata to CSV
-jq -r '[.station_id,.name,.lat,.lon]| @csv' outputs/bern_stations.json > outputs/bern_stations.csv
+    timestamp: $timestamp,
 
-# Add station CSV header
-(echo 'station_id,station_name,lat,lon';cat outputs/bern_stations.csv) > outputs/bern_stations_header.csv
+    last_reported,
 
-# Convert bike data to CSV with readable timestamps
-jq -r '[(.timestamp | strflocaltime("%Y-%m-%d %H:%M:%S")),(.last_reported | strflocaltime("%Y-%m-%d %H:%M:%S")),.station_id,.total_bikes,.ebikes,.mbikes,.hbikes]| @csv' outputs/bike_flat.json > outputs/bike_flat.csv
+    station_id,
 
-# Add bike CSV header
-(echo 'datetime,last_reported,station_id,total_bikes,ebikes,mbikes,hbikes'; cat outputs/bike_flat.csv) > outputs/bike_flat_header.csv
+    total_bikes: .num_bikes_available,
 
-echo "Converting JSON streams into arrays..."
+    ebikes:
+    (
+        [
+            .vehicle_types_available[]
+            | select(.vehicle_type_id == "ebike")
+            | .count
+        ] | add
+    ) // 0,
 
-# Convert JSON streams into arrays
-jq -s '.' outputs/bern_stations.json > outputs/bern_stations_array.json
-jq -s '.' outputs/bike_flat.json > outputs/bike_flat_array.json
+    mbikes:
+    (
+        [
+            .vehicle_types_available[]
+            | select(.vehicle_type_id == "mbike")
+            | .count
+        ] | add
+    ) // 0,
 
-echo "Joining station metadata with bike data..."
+    hbikes:
+    (
+        [
+            .vehicle_types_available[]
+            | select(.vehicle_type_id == "hbike")
+            | .count
+        ] | add
+    ) // 0
 
-# Join station metadata with bike data
-jq -n -r --slurpfile stations outputs/bern_stations_array.json --slurpfile bikes outputs/bike_flat_array.json '$bikes[0][] as $bike| ($stations[0][]| select(.station_id == $bike.station_id)) as $station| [($bike.timestamp | strflocaltime("%Y-%m-%d %H:%M:%S")),($bike.last_reported | strflocaltime("%Y-%m-%d %H:%M:%S")),$bike.station_id,$station.name,$station.lat,$station.lon,$bike.total_bikes,$bike.ebikes,$bike.mbikes,$bike.hbikes]| @csv' > outputs/final_bike_table.csv
+  }
 
-# Add final CSV header
-(echo 'datetime,last_reported,station_id,station_name,lat,lon,total_bikes,ebikes,mbikes,hbikes'; cat outputs/final_bike_table.csv) > outputs/final_bike_table_header.csv
+' data/combined.ndjson \
+| jq -s 'unique_by([.timestamp, .station_id])' \
+> bikes_tmp.json
+
+echo "Creating final bike table..."
+
+(
+echo 'datetime,last_reported,station_id,station_name,lat,lon,capacity,total_bikes,ebikes,mbikes,hbikes'
+
+jq -n -r \
+--slurpfile stations stations_tmp.json \
+--slurpfile bikes bikes_tmp.json '
+
+$bikes[0][] as $bike
+
+| (
+
+    $stations[0][]
+
+    | select(.station_id == $bike.station_id)
+
+  ) as $station
+
+| [
+
+    ($bike.timestamp | strflocaltime("%Y-%m-%d %H:%M:%S")),
+
+    ($bike.last_reported | strflocaltime("%Y-%m-%d %H:%M:%S")),
+
+    $bike.station_id,
+
+    $station.name,
+
+    $station.lat,
+
+    $station.lon,
+
+    $station.capacity,
+
+    $bike.total_bikes,
+
+    $bike.ebikes,
+
+    $bike.mbikes,
+
+    $bike.hbikes
+
+  ]
+
+| @csv
+'
+
+) > outputs/final_bike_table.csv
+
+echo "Cleaning temporary files..."
+
+rm -f stations_tmp.json
+rm -f bikes_tmp.json
 
 echo "Preview of final output:"
-head outputs/final_bike_table_header.csv
+
+head outputs/final_bike_table.csv
 
 echo "Pipeline completed successfully."
