@@ -2,7 +2,7 @@
 .venv/
 __pycache__/
 *.pyc
-
+*
 # macOS
 .DS_Store
 
@@ -26,3 +26,8 @@ data/processed/bike_flat_raw.json
 data/processed/combined.ndjson
 data/processed/duplicates_count.txt
 data/processed/final_bike_table.csv
+
+# Processed temporary files
+data/processed/*.json
+data/processed/*.ndjson
+data/processed/*.txt
