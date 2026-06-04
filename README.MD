@@ -2,7 +2,7 @@
 
 This project collects and processes real-time Velospot bike availability data for stations in Bern using the [Shared Mobility Open Data API](https://opendata.swiss/de/dataset/standorte-und-verfugbarkeit-von-shared-mobility-angeboten).
 
-The goal is to analyze spatial and temporal patterns in bike availability over one week. Since the API provides station availability snapshots rather than individual trip records, changes in the number of available bikes are used as a proxy for station activity and turnover.
+The goal is to analyze spatial and temporal patterns in bike availability over a four-week observation period (6 May to 3 June 2026). Since the API provides station availability snapshots rather than individual trip records, changes in the number of available bikes are used as a proxy for station activity and turnover.
 
 ## Project structure
 
@@ -24,7 +24,7 @@ bern-bike-availability-data/
 │   └── prepare_bike_dataset.sh           # Filters, transforms and joins data into the final dataset
 ├── logs/
 │   └── station_status_collection.log     # Log file for successful data collection and errors
-├── tableau/                              # Tableau workbook
+├── visualization/                        # Tableau workbook
 ├── .env.example                          # Template for required environment variables
 ├── .gitignore
 └── README.md
